@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rana Cozy Home | Your Premium Stay</title>
+    <title>Rana Cozy Home | Hilltop Retreat near Swayambhu</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -25,165 +30,263 @@
             }
         }
     </script>
+
     <style>
-        body { font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-        }
-        /* Mobile Menu Animation */
-        #mobile-menu {
-            transition: transform 0.3s ease-in-out;
-            transform: translateX(100%);
-        }
-        #mobile-menu.open {
-            transform: translateX(0);
-        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; }
+        .glass-effect { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
+        
+        /* Mobile Menu Transition */
+        #mobile-menu { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(100%); }
+        #mobile-menu.open { transform: translateX(0); }
+        
+        /* Hero Animation */
+        .hero-zoom { animation: slowZoom 20s infinite alternate; }
+        @keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.1); } }
+        
+        /* WhatsApp Floating */
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; z-index: 1000; transition: transform 0.3s; }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        /* Slick Spacing & Dots */
+        .slick-slide { padding: 0 10px; outline: none !important; }
+        .slick-dots li button:before { color: #2D5A61; font-size: 10px; opacity: 0.5; }
+        .slick-dots li.slick-active button:before { color: #B8926A; opacity: 1; }
+        .gallery-container { padding: 60px 0; }
+        
+        /* Smooth Scroll Offset Correction */
+        section { scroll-margin-top: 80px; }
     </style>
 </head>
 <body class="bg-[#FDFCFB] text-gray-800 overflow-x-hidden">
 
-    <nav class="fixed w-full z-[100] bg-white/95 backdrop-blur-md border-b border-stone-100">
-        <div class="max-w-7xl mx-auto px-4 md:px-8 py-3 md:py-4 flex justify-between items-center">
-            <img src="./images/logo.png" alt="Rana Logo" class="h-10 md:h-14">
+    <a href="https://wa.me/9779841365446" target="_blank" class="whatsapp-float bg-[#25D366] p-4 rounded-full shadow-2xl flex items-center justify-center">
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.628 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </a>
+
+    <nav class="fixed w-full z-[100] bg-white/95 backdrop-blur-md border-b border-stone-100 h-20 flex items-center">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 w-full flex justify-between items-center">
+            <a href="#home">
+                <img src="./images/logo.png" alt="Rana Logo" class="h-10 md:h-12 hover:opacity-80 transition">
+            </a>
             
-            <div class="hidden md:flex space-x-8 font-medium text-xs uppercase tracking-widest text-brandTeal">
+            <div class="hidden md:flex space-x-8 font-medium text-[10px] uppercase tracking-[0.2em] text-brandTeal">
                 <a href="#home" class="hover:text-brandGold transition">Home</a>
+                <a href="#about" class="hover:text-brandGold transition">The Stay</a>
                 <a href="#amenities" class="hover:text-brandGold transition">Amenities</a>
+                <a href="#pricing" class="hover:text-brandGold transition">Pricing</a>
                 <a href="#gallery" class="hover:text-brandGold transition">Gallery</a>
-                <a href="#contact" class="hover:text-brandGold transition font-bold text-brandGold border-b border-brandGold">Book Now</a>
+                <a href="#contact" class="bg-brandTeal text-white px-5 py-2 rounded-full hover:bg-brandGold transition">Inquire Now</a>
             </div>
 
-            <button id="menu-toggle" class="md:hidden text-brandTeal p-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
+            <button id="menu-toggle" class="md:hidden text-brandTeal p-2 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
             </button>
         </div>
     </nav>
 
-    <div id="mobile-menu" class="fixed inset-0 bg-white z-[200] flex flex-col items-center justify-center space-y-8 text-2xl font-serif">
-        <button id="menu-close" class="absolute top-6 right-6 text-brandTeal">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+    <div id="mobile-menu" class="fixed inset-0 bg-brandTeal z-[200] flex flex-col items-center justify-center space-y-8 text-xl font-serif text-white">
+        <button id="menu-close" class="absolute top-6 right-6 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
-        <a href="#home" class="mobile-link">Home</a>
-        <a href="#amenities" class="mobile-link">Amenities</a>
-        <a href="#gallery" class="mobile-link">Gallery</a>
-        <a href="#contact" class="mobile-link text-brandGold font-bold">Book Now</a>
+        <a href="#home" class="mobile-link hover:text-brandGold">Home</a>
+        <a href="#about" class="mobile-link hover:text-brandGold">The Stay</a>
+        <a href="#amenities" class="mobile-link hover:text-brandGold">Amenities</a>
+        <a href="#pricing" class="mobile-link hover:text-brandGold">Pricing</a>
+        <a href="#gallery" class="mobile-link hover:text-brandGold">Gallery</a>
+        <a href="#contact" class="mobile-link bg-white text-brandTeal px-8 py-3 rounded-full font-sans font-bold text-sm uppercase tracking-widest">Inquire Now</a>
     </div>
 
-    <section id="home" class="relative h-screen flex items-center justify-center text-white text-center">
+    <section id="home" class="relative h-[90vh] flex items-center justify-center text-white text-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600" class="w-full h-full object-cover" alt="Luxury Home">
+            <img src="./images/cover.jpeg" class="w-full h-full object-cover hero-zoom" alt="Swayambhu View">
             <div class="absolute inset-0 bg-black/40"></div>
         </div>
-        <div class="relative z-10 px-6" data-aos="fade-up">
+        <div class="relative z-10 px-6" data-aos="zoom-out">
             <h1 class="text-4xl md:text-8xl font-serif mb-4 italic">Experience Stillness.</h1>
-            <p class="text-lg md:text-2xl font-light tracking-widest max-w-2xl mx-auto uppercase">The Premier Rana Cozy Home Retreat</p>
-            <div class="mt-10 h-12 w-px bg-white mx-auto animate-bounce"></div>
+            <p class="text-xs md:text-2xl font-light tracking-[0.3em] uppercase">Rana Cozy Home • Swayambhu Hilltop</p>
         </div>
     </section>
 
-    <section id="about" class="py-16 md:py-24 px-6 max-w-5xl mx-auto text-center">
-        <h2 class="text-brandGold font-semibold uppercase tracking-[0.3em] text-xs md:text-sm mb-4" data-aos="fade-up">Welcome to Rana</h2>
-        <p class="text-2xl md:text-5xl font-serif leading-tight mb-8" data-aos="fade-up">
-            Designed for those who appreciate the <span class="italic text-brandTeal font-bold">art of slowing down.</span>
-        </p>
-        <div class="h-1 w-20 bg-brandSage mx-auto mb-8"></div>
-        <p class="text-gray-600 leading-relaxed max-w-2xl mx-auto text-base md:text-lg">
-            Our home isn't just a place to sleep; it’s a sanctuary. From sun-drenched views to premium linens, every corner is curated for comfort.
-        </p>
-    </section>
-
-    <section id="amenities" class="py-12 md:py-20 bg-brandSage/30">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-            <div class="p-6 md:p-8 bg-white rounded-2xl shadow-sm text-center" data-aos="zoom-in">
-                <div class="text-3xl md:text-4xl mb-3">🏠</div>
-                <h3 class="font-bold text-brandTeal text-sm md:text-base mb-1">Private Entry</h3>
-                <p class="hidden md:block text-xs text-gray-500">Seamless self-check-in privacy.</p>
+    <section id="about" class="py-16 md:py-24 px-6 max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <h2 class="text-brandGold font-semibold uppercase tracking-[0.3em] text-[10px] mb-4">The Experience</h2>
+                <h3 class="text-3xl md:text-5xl font-serif leading-tight mb-6 text-brandTeal font-bold">A Sanctuary Above The City</h3>
+                <p class="text-gray-600 leading-relaxed text-lg mb-6">
+                    Located just <strong>5 minutes from Swayambhu Temple</strong>, our cozy hilltop stay offers a peaceful atmosphere and beautiful views. 
+                </p>
+                <p class="text-gray-600 leading-relaxed mb-8 text-sm md:text-base">
+                    Ideal for couples and families, you can relax together and enjoy the scenic surroundings from the top. Daily needs are easily accessible with cafés, shops, and a mini-mart nearby.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <span class="bg-brandSage/30 px-4 py-2 rounded-full text-brandTeal text-[10px] font-bold uppercase tracking-widest">Family Friendly</span>
+                    <span class="bg-brandSage/30 px-4 py-2 rounded-full text-brandTeal text-[10px] font-bold uppercase tracking-widest">Scenic View</span>
+                </div>
             </div>
-            <div class="p-6 md:p-8 bg-white rounded-2xl shadow-sm text-center" data-aos="zoom-in" data-aos-delay="100">
-                <div class="text-3xl md:text-4xl mb-3">🍳</div>
-                <h3 class="font-bold text-brandTeal text-sm md:text-base mb-1">Full Kitchen</h3>
-                <p class="hidden md:block text-xs text-gray-500">High-end appliances included.</p>
-            </div>
-            <div class="p-6 md:p-8 bg-white rounded-2xl shadow-sm text-center" data-aos="zoom-in" data-aos-delay="200">
-                <div class="text-3xl md:text-4xl mb-3">🛁</div>
-                <h3 class="font-bold text-brandTeal text-sm md:text-base mb-1">Spa Bath</h3>
-                <p class="hidden md:block text-xs text-gray-500">Organic towels and soaps.</p>
-            </div>
-            <div class="p-6 md:p-8 bg-white rounded-2xl shadow-sm text-center" data-aos="zoom-in" data-aos-delay="300">
-                <div class="text-3xl md:text-4xl mb-3">📺</div>
-                <h3 class="font-bold text-brandTeal text-sm md:text-base mb-1">Smart TV</h3>
-                <p class="hidden md:block text-xs text-gray-500">5G Wi-Fi & Entertainment.</p>
+            <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
+                <img src="./images/view.jpeg" class="rounded-2xl h-48 md:h-72 w-full object-cover shadow-lg mt-12">
+                <img src="./images/bedroom.jpeg" class="rounded-2xl h-48 md:h-72 w-full object-cover shadow-lg">
             </div>
         </div>
     </section>
 
-    <section id="gallery" class="py-12 md:py-24">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-2 px-2">
-            <img src="./images/view.jpeg" class="w-full h-64 md:h-80 object-cover" data-aos="fade-up">
-            <img src="./images/bedroom.jpeg" class="w-full h-64 md:h-80 object-cover" data-aos="fade-up">
-            <img src="./images/kitchen.jpeg" class="w-full h-64 md:h-80 object-cover" data-aos="fade-up">
-            <img src="./images/washroom.jpeg" class="w-full h-64 md:h-80 object-cover" data-aos="fade-up">
-           </div>
+    <section id="amenities" class="py-16 bg-brandSage/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-center font-serif text-3xl md:text-5xl text-brandTeal mb-12 italic">Everything You Need</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center">
+                <div class="p-8 bg-white rounded-3xl shadow-sm hover:shadow-md transition" data-aos="fade-up">
+                    <div class="text-4xl mb-4">🏛️</div>
+                    <h4 class="font-bold text-brandTeal text-[10px] uppercase tracking-widest">Near Temple</h4>
+                </div>
+                <div class="p-8 bg-white rounded-3xl shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl mb-4">🛒</div>
+                    <h4 class="font-bold text-brandTeal text-[10px] uppercase tracking-widest">Mini Mart</h4>
+                </div>
+                <div class="p-8 bg-white rounded-3xl shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl mb-4">☕</div>
+                    <h4 class="font-bold text-brandTeal text-[10px] uppercase tracking-widest">Local Cafes</h4>
+                </div>
+                <div class="p-8 bg-white rounded-3xl shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-4xl mb-4">🛁</div>
+                    <h4 class="font-bold text-brandTeal text-[10px] uppercase tracking-widest">Spa Bath</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-16 md:py-24 px-6 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-brandGold font-semibold uppercase tracking-[0.3em] text-[10px] mb-2">Rates</h2>
+                <h3 class="text-3xl md:text-5xl font-serif font-bold text-brandTeal italic">Simple & Fair Pricing</h3>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-stone-50 p-8 rounded-3xl border border-stone-100" data-aos="fade-right">
+                    <h4 class="text-lg font-bold mb-6 flex items-center gap-2">💲 Daily Rates</h4>
+                    <div class="space-y-4">
+                        <div class="flex justify-between border-b pb-2 text-sm"><span>Standard Nightly</span> <span class="font-bold">USD $36</span></div>
+                        <div class="flex justify-between border-b pb-2 text-sm"><span>Weekend (Fri-Sun)</span> <span class="font-bold text-brandGold">USD $37</span></div>
+                    </div>
+                </div>
+                <div class="bg-brandTeal p-8 rounded-3xl text-white shadow-xl" data-aos="fade-left">
+                    <h4 class="text-lg font-bold mb-6 flex items-center gap-2">🔖 Long Stay Discounts</h4>
+                    <div class="space-y-4">
+                        <div class="flex justify-between border-b border-white/20 pb-2 text-sm"><span>Weekly (7+ Nights)</span> <span class="font-bold">10% OFF</span></div>
+                        <div class="flex justify-between border-b border-white/20 pb-2 text-sm"><span>Monthly (28+ Nights)</span> <span class="font-bold text-brandGold">20% OFF</span></div>
+                    </div>
+                    <p class="text-[10px] mt-4 opacity-70 italic">*Applied automatically</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-container bg-stone-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-center font-serif text-3xl md:text-5xl text-brandTeal mb-12 italic">The Home Gallery</h2>
+            <div class="slick-gallery">
+                <div><div class="overflow-hidden rounded-3xl h-64 md:h-80 shadow-lg"><img src="./images/view.jpeg" class="w-full h-full object-cover"></div></div>
+                <div><div class="overflow-hidden rounded-3xl h-64 md:h-80 shadow-lg"><img src="./images/cover.jpeg" class="w-full h-full object-cover"></div></div>
+                <div><div class="overflow-hidden rounded-3xl h-64 md:h-80 shadow-lg"><img src="./images/bedroom2.jpeg" class="w-full h-full object-cover"></div></div>
+                <div><div class="overflow-hidden rounded-3xl h-64 md:h-80 shadow-lg"><img src="./images/kitchen2.jpeg" class="w-full h-full object-cover"></div></div>
+                <div><div class="overflow-hidden rounded-3xl h-64 md:h-80 shadow-lg"><img src="./images/lounge.jpeg" class="w-full h-full object-cover"></div></div>
+                <div><div class="overflow-hidden rounded-3xl h-64 md:h-80 shadow-lg"><img src="./images/bedroom.jpeg" class="w-full h-full object-cover"></div></div>
+                <div><div class="overflow-hidden rounded-3xl h-64 md:h-80 shadow-lg"><img src="./images/washroom.jpeg" class="w-full h-full object-cover"></div></div>
+            </div>
+        </div>
     </section>
 
     <section id="contact" class="py-16 md:py-24 px-6 bg-brandTeal text-white">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start">
-            
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div data-aos="fade-right">
-                <h2 class="text-4xl md:text-5xl font-serif mb-6 leading-tight">Begin Your Story.</h2>
-                <p class="text-brandSage mb-8 text-sm md:text-base">Leave your details and preferred dates below.</p>
-                <div class="space-y-4 mb-8 text-lg">
-                    <p class="flex items-center gap-3"><span>📞</span> 0426 288 823</p>
-                    <p class="flex items-center gap-3 text-sm md:text-lg"><span>✉️</span> hello@ranacozyhome.com.au</p>
+                <h2 class="text-4xl md:text-6xl font-serif mb-8 italic text-brandSage">Start Your Retreat</h2>
+                <div class="space-y-8 mb-10 text-sm md:text-base">
+                    <div class="flex items-center gap-5">
+                        <span class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-full text-xl">📞</span>
+                        <div><p class="text-[8px] uppercase opacity-60 tracking-widest">Mobile</p><a href="tel:+9779841365446" class="text-lg font-bold hover:text-brandGold transition">+977 9841365446</a></div>
+                    </div>
+                    <div class="flex items-center gap-5">
+                        <span class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-full text-xl">✉️</span>
+                        <div><p class="text-[8px] uppercase opacity-60 tracking-widest">Email</p><a href="mailto:Boostu99p@gmail.com" class="text-lg font-bold hover:text-brandGold transition">Boostu99p@gmail.com</a></div>
+                    </div>
                 </div>
-                <div class="h-[250px] md:h-[300px] rounded-3xl overflow-hidden border-2 border-white/20">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.8248408906!2d151.0429!3d-33.91!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDU0JzM2LjAiUyAxNTHCsDAyJzM0LjQiRQ!5e0!3m2!1sen!2sau!4v1614123456789!5m2!1sen!2sau" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <div class="h-64 rounded-3xl overflow-hidden shadow-2xl grayscale hover:grayscale-0 transition duration-700">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.8415950150993!2d85.2828!3d27.7149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDQyJzUzLjYiTiA4NcKwMTYnNTguMSJF!5e0!3m2!1sen!2snp!4v1620000000000!5m2!1sen!2snp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
-
-            <div class="glass-effect p-6 md:p-12 rounded-3xl text-gray-800 shadow-2xl" data-aos="fade-left">
-                <form action="https://formspree.io/f/YOUR_ID" method="POST" class="space-y-5">
-                    <div>
-                        <label class="text-[10px] uppercase font-bold tracking-widest text-brandTeal">Full Name</label>
-                        <input type="text" name="name" required class="w-full mt-1 p-3 border-b border-brandSage focus:border-brandTeal outline-none bg-transparent">
-                    </div>
-                    <div>
-                        <label class="text-[10px] uppercase font-bold tracking-widest text-brandTeal">Email Address</label>
-                        <input type="email" name="email" required class="w-full mt-1 p-3 border-b border-brandSage focus:border-brandTeal outline-none bg-transparent">
-                    </div>
-                    <div>
-                        <label class="text-[10px] uppercase font-bold tracking-widest text-brandTeal">Message / Dates</label>
-                        <textarea name="message" rows="3" class="w-full mt-1 p-3 border-b border-brandSage focus:border-brandTeal outline-none bg-transparent"></textarea>
-                    </div>
-                    <button class="w-full bg-brandTeal text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-brandGold transition text-sm">Request Availability</button>
+            <div class="glass-effect p-8 md:p-12 rounded-[2rem] text-gray-800 shadow-2xl" data-aos="fade-left">
+                <h3 class="text-2xl font-serif mb-8 text-brandTeal italic">Booking Inquiry</h3>
+                <form id="booking-form" action="https://formspree.io/f/YOUR_ID" method="POST" class="space-y-6">
+                    <input type="text" name="name" placeholder="Full Name" required class="w-full p-4 border-b border-stone-200 focus:border-brandTeal outline-none bg-transparent">
+                    <input type="email" name="email" placeholder="Email Address" required class="w-full p-4 border-b border-stone-200 focus:border-brandTeal outline-none bg-transparent">
+                    <textarea name="message" placeholder="Preferred Dates / Message" rows="3" class="w-full p-4 border-b border-stone-200 focus:border-brandTeal outline-none bg-transparent"></textarea>
+                    <button type="submit" class="w-full bg-brandTeal text-white py-4 rounded-full font-bold uppercase tracking-widest hover:bg-brandGold transition active:scale-95">Inquire Now</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <footer class="py-12 bg-white text-center px-6">
-        <img src="./images/logo.png" alt="Rana Logo" class="h-10 mx-auto mb-4 opacity-50 grayscale">
-        <p class="text-[10px] text-gray-400 uppercase tracking-[0.2em]">© 2026 Rana Cozy Home | Crafted for Comfort</p>
+    <footer class="py-12 bg-white text-center px-6 border-t border-stone-100">
+        <img src="./images/logo.png" alt="Rana Logo" class="h-10 mx-auto mb-6 opacity-30">
+        <p class="text-[8px] text-gray-400 uppercase tracking-[0.4em]">© 2026 Rana Cozy Home | Swayambhu Hilltop Sanctuary</p>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
     <script>
-        AOS.init({ duration: 1000, once: true });
+        $(document).ready(function(){
+            // Init AOS
+            AOS.init({ duration: 1000, once: true });
 
-        // Mobile Menu Logic
-        const menuBtn = document.getElementById('menu-toggle');
-        const closeBtn = document.getElementById('menu-close');
-        const menu = document.getElementById('mobile-menu');
-        const links = document.querySelectorAll('.mobile-link');
+            // Menu Logic
+            const $menu = $('#mobile-menu');
+            $('#menu-toggle').on('click', () => $menu.addClass('open'));
+            $('#menu-close').on('click', () => $menu.removeClass('open'));
+            $('.mobile-link').on('click', () => $menu.removeClass('open'));
 
-        menuBtn.addEventListener('click', () => menu.classList.add('open'));
-        closeBtn.addEventListener('click', () => menu.classList.remove('open'));
-        links.forEach(link => link.addEventListener('click', () => menu.classList.remove('open')));
+            // Slick Gallery
+            $('.slick-gallery').slick({
+                dots: true,
+                infinite: true,
+                speed: 800,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 3000,
+                responsive: [
+                    { breakpoint: 1024, settings: { slidesToShow: 2 } },
+                    { breakpoint: 640, settings: { slidesToShow: 1, arrows: false } }
+                ]
+            });
+
+            // Form Logic
+            $('#booking-form').on('submit', async function(e) {
+                e.preventDefault();
+                const $btn = $(this).find('button');
+                $btn.text("Sending...").prop('disabled', true);
+                
+                // Formspree logic simulation
+                try {
+                    const response = await fetch(this.action, { 
+                        method: 'POST', 
+                        body: new FormData(this), 
+                        headers: { 'Accept': 'application/json' } 
+                    });
+                    if (response.ok) {
+                        Toastify({ text: "✅ Inquiry Sent Successfully!", duration: 4000, style: { background: "#2D5A61" } }).showToast();
+                        this.reset();
+                    } else {
+                        throw new Error();
+                    }
+                } catch (err) {
+                    Toastify({ text: "❌ Connection Error. Please use WhatsApp.", duration: 4000, style: { background: "#B8926A" } }).showToast();
+                }
+                $btn.text("Inquire Now").prop('disabled', false);
+            });
+        });
     </script>
 </body>
 </html>
